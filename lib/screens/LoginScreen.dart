@@ -47,6 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 MaterialButton(
+                  onPressed: (){},
+                  child: Text("Sign in"),
+
+
+                ),
+
+                MaterialButton(
                   onPressed: () {
                     print('sighn up');
                   },
