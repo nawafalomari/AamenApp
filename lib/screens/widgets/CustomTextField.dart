@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   String placeHolder;
   bool isPassword;
-
+  Function(String) onFinish;
   CustomTextField({
+    required this.onFinish,
     this.isPassword = false,
     this.placeHolder = '',
     Key? key,
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
       height: 40,
       child: TextField(
+        onChanged: onFinish,
         textAlignVertical: TextAlignVertical.bottom,
         obscureText: isPassword,
         keyboardType: TextInputType.visiblePassword,
