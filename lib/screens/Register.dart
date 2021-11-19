@@ -230,12 +230,14 @@ class _Register extends State<Register> {
             'haveComp': isChecked,
             'phoneNumber': phoneNumber,
             'email': email,
-            
+
 
             // 42
           })
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));
+
+          
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
