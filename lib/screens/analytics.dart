@@ -1,3 +1,4 @@
+import 'package:aamen/screens/widgets/infoCard.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class _analyticsState extends State<analytics> {
             //children of main col
             Container(
                 child: Column(children: [
-              Text("data"),
+              infoCard("data"),
               Padding(
                 padding: EdgeInsets.all(15.0),
                 child: new LinearPercentIndicator(
@@ -41,7 +42,7 @@ class _analyticsState extends State<analytics> {
             ])),
             Container(
                 child: Column(children: [
-              Text("data"),
+              infoCard("data"),
               Padding(
                 padding: EdgeInsets.all(15.0),
                 child: new LinearPercentIndicator(
@@ -58,7 +59,7 @@ class _analyticsState extends State<analytics> {
             ])),
             Container(
                 child: Column(children: [
-              Text("data"),
+              infoCard("data"),
               Padding(
                 padding: EdgeInsets.all(15.0),
                 child: new LinearPercentIndicator(

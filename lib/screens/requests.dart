@@ -51,32 +51,35 @@ class MyStatelessWidget extends StatelessWidget {
                     color: const Color(0xffeeee00), // Yellow
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: Expanded(child: card("data", "hadi", "yes", "test")),
+                    child: card("data", "hadi", "yes", "test"),
                   ),
-                           Container(
+                  Container(
                     // A fixed-height child.
                     color: const Color(0xffeeee00), // Yellow
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: Expanded(child: card("data", "hadi", "yes", "test")),
-                  ),          Container(
+                    child: card("data", "hadi", "yes", "test"),
+                  ),
+                  Container(
                     // A fixed-height child.
                     color: const Color(0xffeeee00), // Yellow
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: Expanded(child: card("data", "hadi", "yes", "test")),
-                  ),          Container(
+                    child: card("data", "hadi", "yes", "test"),
+                  ),
+                  Container(
                     // A fixed-height child.
                     color: const Color(0xffeeee00), // Yellow
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: Expanded(child: card("data", "hadi", "yes", "test")),
-                  ),          Container(
+                    child: card("data", "hadi", "yes", "test"),
+                  ),
+                  Container(
                     // A fixed-height child.
                     color: const Color(0xffeeee00), // Yellow
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: Expanded(child: card("data", "hadi", "yes", "test")),
+                    child: card("data", "hadi", "yes", "test"),
                   ),
                 ],
               ),

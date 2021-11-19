@@ -13,6 +13,7 @@ import 'package:aamen/screens/requests.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:aamen/screens/analytics.dart';
+import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 void main() => runApp(const paitentHome());
 
@@ -45,8 +46,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    analytics(),requests(),generalInfo()
-
+    analytics(),
+    requests(),
+    generalInfo(),
   ];
 
   void _onItemTapped(int index) {
@@ -78,15 +80,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.analytics_rounded),
             label: 'Analytics',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.request_page),
             label: 'Requests',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.info),
             label: 'General Info',
           ),
         ],
