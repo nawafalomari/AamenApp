@@ -52,7 +52,7 @@ class _analyticsState extends State<analytics> {
                   percent: 0.9,
                   center: Text("90.0%"),
                   linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.greenAccent,
+                  progressColor: Colors.red,
                 ),
               )
             ])),
