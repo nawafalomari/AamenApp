@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "837098641016",
+    "project_id": "optimal-spark-323719",
+    "storage_bucket": "optimal-spark-323719.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837098641016:android:90961ca0921a8d3d887f8d",
+        "android_client_info": {
+          "package_name": "com.aamen.aamen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837098641016-gi9jvqjmi1phs2dqj42pfm444q5a6ahp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrFZFQt2yeMQTQPRBnkbIT5_YFrfnO9v8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837098641016-gi9jvqjmi1phs2dqj42pfm444q5a6ahp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "837098641016-hrfgei0i6tve50i16a9scos5phskc9j7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.aamen.aamen"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
