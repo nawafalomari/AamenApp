@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:aamen/screens/Register.dart';
+import 'package:aamen/screens/paitentHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text('تسجيل الدخول'),
         ),
         body: Center(
@@ -99,6 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
         value.docs.forEach((doc) {
           print(doc["name"]);
         });
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => paitentHome()),
+        );
         ;
       });
 

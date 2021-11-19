@@ -7,8 +7,10 @@
 // amber. The `_onItemTapped` function changes the selected item's index
 // and displays a corresponding message in the center of the [Scaffold].
 
+import 'package:aamen/screens/LoginScreen.dart';
 import 'package:aamen/screens/generalInfo.dart';
 import 'package:aamen/screens/requests.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:aamen/screens/analytics.dart';
 
@@ -43,8 +45,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    analytics(),requests(),
-
+    analytics(),
+    requests(),
   ];
 
   void _onItemTapped(int index) {
@@ -57,6 +59,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          GestureDetector(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Icon(Icons.logout),
+            ),
+            onTap: () {
+              sighnOut();
+            },
+          )
+        ],
         title: const Text('Hi User ! :) '),
       ),
       body: Center(
@@ -81,6 +94,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+    );
+  }
+
+  Future<void> sighnOut() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 }
