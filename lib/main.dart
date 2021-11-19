@@ -1,3 +1,4 @@
+import 'package:aamen/screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,14 +11,7 @@ class AamenMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text('Aamen!'),
-      ),
-      body: Center(
-        child: Text("hello world form aamen :>")
-      ),
-    ),
+      home: LoginScreen(),
     );
   }
 }
