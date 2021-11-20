@@ -1,4 +1,5 @@
 import 'package:aamen/Req.dart';
+import 'package:aamen/screens/Loading.dart';
 import 'package:aamen/screens/LoginScreen.dart';
 import 'package:aamen/screens/paitentHome.dart';
 import 'package:aamen/screens/requests.dart';
@@ -115,6 +116,19 @@ class _AppState extends State<App> {
               home: LoginScreen(),
             );
           }
+        } 
+
+        if (FirebaseAuth.instance.currentUser != null) {
+          return MaterialApp(
+            home: paitentHome(
+              requists: this.requests,
+              user: u!,
+            ),
+          );
+        } else {
+          return MaterialApp(
+            home: LoginScreen(),
+          );
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
