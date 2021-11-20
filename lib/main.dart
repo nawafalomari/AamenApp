@@ -25,7 +25,7 @@ class _AppState extends State<App> {
   List<Req> requests = [];
 
   // Define an async function to initialize FlutterFire
-  void initializeFlutterFire() async {
+  Future<void> initializeFlutterFire() async {
     try {
       // Wait for Firebase to initialize and set `_initialized` state to true
       await Firebase.initializeApp();
@@ -92,17 +92,46 @@ class _AppState extends State<App> {
 
     // Show a loader until FlutterFire is initialized
 
-    if (FirebaseAuth.instance.currentUser != null) {
-      return MaterialApp(
-        home: paitentHome(
-          requists: this.requests,
-          user: u!,
-        ),
-      );
-    }
+    return FutureBuilder(
+      // Initialize FlutterFire
+      future: initializeFlutterFire(),
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return LoginScreen();
+        }
 
-    return MaterialApp(
-      home: LoginScreen(),
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (FirebaseAuth.instance.currentUser != null) {
+            return MaterialApp(
+              home: paitentHome(
+                requists: this.requests,
+                user: u!,
+              ),
+            );
+          } else {
+            return MaterialApp(
+              home: LoginScreen(),
+            );
+          }
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+      },
     );
+    // if (FirebaseAuth.instance.currentUser != null) {
+
+    //   return MaterialApp(
+    //     home: paitentHome(
+    //       requists: this.requests,
+    //       user: u!,
+    //     ),
+    //   );
+    // }
+
+    // return MaterialApp(
+    //   home: LoginScreen(),
+    // );
   }
 }

@@ -24,39 +24,39 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   Users? u = null;
   List<Req> requests = [];
+  Color col = Color(0x00000000);
   String email = '';
   String password = '';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xfff2f3f7),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height * 0.7,
-              width: MediaQuery.of(context).size.width,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xff2470c7),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: const Radius.circular(70),
-                    bottomRight: const Radius.circular(70),
-                  ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Color(0xfff2f3f7),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height * 0.7,
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xff2470c7),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: const Radius.circular(70),
+                  bottomRight: const Radius.circular(70),
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildLogo(),
-                _buildContainer(),
-                _buildSignUpBtn(),
-              ],
-            )
-          ],
-        ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _buildLogo(),
+              _buildContainer(),
+              CircularProgressIndicator(color: col),
+              _buildSignUpBtn(),
+            ],
+          )
+        ],
       ),
     );
   }
@@ -154,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
           });
         },
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.email), labelText: 'أيميلك يا حلو'),
+            prefixIcon: Icon(Icons.email), labelText: 'example@gmail.com'),
       ),
     );
   }
@@ -181,13 +181,11 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.lock),
-          labelText: 'باسوردك؟',
+          labelText: '***********',
         ),
       ),
     );
   }
-
- 
 
   Widget _buildLoginButton() {
     final ButtonStyle style = ElevatedButton.styleFrom(
@@ -209,6 +207,9 @@ class _LoginScreenState extends State<LoginScreen> {
             style: style,
             onPressed: () {
               if (email != '' && password != '') {
+                setState(() {
+                  col = Colors.blue;
+                });
                 sighnin(email, password);
               }
             },
@@ -233,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Container(
           margin: EdgeInsets.only(bottom: 20.0),
           child: Text(
-            '- أو؟ -',
+            '',
             style: TextStyle(
               fontWeight: FontWeight.w400,
             ),
@@ -300,18 +301,18 @@ class _LoginScreenState extends State<LoginScreen> {
             child: RichText(
               text: TextSpan(children: [
                 TextSpan(
-                  text: 'ماعندك حساب؟ :(  ',
+                  text: 'ماعندك حساب؟   ',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: MediaQuery.of(context).size.height / 40,
+                    fontSize: 20,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 TextSpan(
-                    text: 'سوي حساب وشدعوة',
+                    text: 'سجل',
                     style: TextStyle(
                       color: Colors.blue,
-                      fontSize: MediaQuery.of(context).size.height / 40,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ))
               ]),
