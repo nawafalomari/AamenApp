@@ -93,59 +93,58 @@ class _AppState extends State<App> {
 
     // Show a loader until FlutterFire is initialized
 
-    return FutureBuilder(
-      // Initialize FlutterFire
-      future: initializeFlutterFire(),
-      builder: (context, snapshot) {
-        // Check for errors
-        if (snapshot.hasError) {
-          return LoginScreen();
-        }
+    // return FutureBuilder(
+    //   // Initialize FlutterFire
+    //   future: initializeFlutterFire(),
+    //   builder: (context, snapshot) {
+    //     // Check for errors
+    //     if (snapshot.hasError) {
+    //       return LoginScreen();
+    //     }
 
-        // Once complete, show your application
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (FirebaseAuth.instance.currentUser != null) {
-            return MaterialApp(
-              home: paitentHome(
-                requists: this.requests,
-                user: u!,
-              ),
-            );
-          } else {
-            return MaterialApp(
-              home: LoginScreen(),
-            );
-          }
-        } 
+    //     // Once complete, show your application
+    //     if (snapshot.connectionState == ConnectionState.done) {
+    //       if (FirebaseAuth.instance.currentUser != null) {
+    //         return MaterialApp(
+    //           home: paitentHome(
+    //             requists: this.requests,
+    //             user: u!,
+    //           ),
+    //         );
+    //       } else {
+    //         return MaterialApp(
+    //           home: LoginScreen(),
+    //         );
+    //       }
+    //     }
 
-        if (FirebaseAuth.instance.currentUser != null) {
-          return MaterialApp(
-            home: paitentHome(
-              requists: this.requests,
-              user: u!,
-            ),
-          );
-        } else {
-          return MaterialApp(
-            home: LoginScreen(),
-          );
-        }
+    //     if (FirebaseAuth.instance.currentUser != null) {
+    //       return MaterialApp(
+    //         home: paitentHome(
+    //           requists: this.requests,
+    //           user: u!,
+    //         ),
+    //       );
+    //     } else {
+    //       return MaterialApp(
+    //         home: LoginScreen(),
+    //       );
+    //     }
 
-        // Otherwise, show something whilst waiting for initialization to complete
-      },
-    );
-    // if (FirebaseAuth.instance.currentUser != null) {
-
-    //   return MaterialApp(
-    //     home: paitentHome(
-    //       requists: this.requests,
-    //       user: u!,
-    //     ),
-    //   );
-    // }
-
-    // return MaterialApp(
-    //   home: LoginScreen(),
+    //     // Otherwise, show something whilst waiting for initialization to complete
+    //   },
     // );
+    if (FirebaseAuth.instance.currentUser != null) {
+      return MaterialApp(
+        home: paitentHome(
+          requists: this.requests,
+          user: u!,
+        ),
+      );
+    }
+
+    return MaterialApp(
+      home: LoginScreen(),
+    );
   }
 }
