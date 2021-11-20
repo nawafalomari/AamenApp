@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
+import 'package:aamen/Req.dart';
 import 'package:aamen/screens/Register.dart';
 import 'package:aamen/screens/paitentHome.dart';
+import 'package:aamen/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Users? u = null;
+  List<Req> requests = [];
   String email = '';
   String password = '';
   @override
@@ -93,19 +97,45 @@ class _LoginScreenState extends State<LoginScreen> {
 
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('patients')
           .where('email', isEqualTo: email)
           .get()
           .then((value) {
         value.docs.forEach((doc) {
-          print(doc["name"]);
+          this.u = Users(
+              phoneNumber: doc['phoneNumber'],
+              bBudget: doc['bBudget'],
+              company: doc['company'],
+              dBudget: doc['dBudget'],
+              eBudget: doc['eBudget'],
+              email: doc['email'],
+              id: doc['d'],
+              name: doc['name'],
+              totalBudget: doc['totalBudget']);
+        });
+
+        ;
+      });
+      await FirebaseFirestore.instance
+          .collection('req')
+          .where('user', isEqualTo: u!.id)
+          .get()
+          .then((value) {
+        value.docs.forEach((doc) {
+          requests.add(Req(
+              status: doc['status'],
+              title: doc['tilte'],
+              budget: doc['budget']));
         });
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => paitentHome()),
+          MaterialPageRoute(
+              builder: (context) => paitentHome(
+                    requists: this.requests,
+                    user: this.u!,
+                  )),
         );
-        ;
       });
 
       print(userCredential.user!.email);

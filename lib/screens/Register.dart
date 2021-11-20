@@ -1,7 +1,10 @@
 // ignore_for_file: file_names
+import 'package:aamen/screens/paitentHome.dart';
+import 'package:aamen/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../Req.dart';
 import 'widgets/CustomLabel.dart';
 import 'widgets/CustomTextField.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +17,8 @@ class Register extends StatefulWidget {
 }
 
 class _Register extends State<Register> {
+  Users? u;
+  List<Req> req = [];
   int _index = 0;
   bool isChecked = true;
   String email = '';
@@ -214,30 +219,78 @@ class _Register extends State<Register> {
   ) async {
     try {
       await Firebase.initializeApp();
-
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('patients');
-      users
-          .add({
-            'name': name, // John Doe
-            'company': comp, // Stokes and Sons
-            'nId': id,
-            'haveComp': isChecked,
-            'phoneNumber': phoneNumber,
-            'email': email,
+      DocumentReference users =
+          FirebaseFirestore.instance.collection('patients').doc(id);
+      users.set({
+        'name': name, // John Doe
+        'company': comp, // Stokes and Sons
+        'd': id,
+        'haveComp': isChecked,
+        'phoneNumber': phoneNumber,
+        'email': email,
+        'dBudget': 0,
+        'bBudget': 0,
+        'eBudget': 0,
+        'totalBudget': 0,
 
+        // 42
+      }).then((value) => {
+            FirebaseFirestore.instance
+                .collection('patients')
+                .doc(id)
+                .get()
+                .then((DocumentSnapshot documentSnapshot) {
+              if (documentSnapshot.exists) {
+                print(documentSnapshot.get('name'));
+              }
+            })
+          });
+      await FirebaseFirestore.instance
+          .collection('patients')
+          .where('email', isEqualTo: email)
+          .get()
+          .then((value) {
+        value.docs.forEach((doc) {
+          this.u = Users(
+              phoneNumber: doc['phoneNumber'],
+              bBudget: doc['bBudget'],
+              company: doc['company'],
+              dBudget: doc['dBudget'],
+              eBudget: doc['eBudget'],
+              email: doc['email'],
+              id: doc['d'],
+              name: doc['name'],
+              totalBudget: doc['totalBudget']);
+        });
 
-            // 42
-          })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
+        ;
+      });
+      await FirebaseFirestore.instance
+          .collection('req')
+          .where('user', isEqualTo: u!.id)
+          .get()
+          .then((value) {
+        value.docs.forEach((doc) {
+          req.add(Req(
+              status: doc['status'],
+              title: doc['tilte'],
+              budget: doc['budget']));
+        });
 
-          
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => paitentHome(
+                    requists: this.req,
+                    user: this.u!,
+                  )),
+        );
+      }).catchError((error) => print("Failed to add user: $error"));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -245,5 +298,25 @@ class _Register extends State<Register> {
         print('Wrong password provided for that user.');
       }
     }
+  }
+
+  showLoaderDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(
+              margin: EdgeInsets.only(left: 7),
+              child: Text("لحظات بس نسوي الحساب")),
+        ],
+      ),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }

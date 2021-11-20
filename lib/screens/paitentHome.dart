@@ -1,3 +1,19 @@
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
 /// Flutter code sample for BottomNavigationBar
 
 // This example shows a [BottomNavigationBar] as it is used within a [Scaffold]
@@ -7,6 +23,10 @@
 // amber. The `_onItemTapped` function changes the selected item's index
 // and displays a corresponding message in the center of the [Scaffold].
 
+// ignore_for_file: must_be_immutable
+
+import 'package:aamen/Req.dart';
+import 'package:aamen/main.dart';
 import 'package:aamen/screens/LoginScreen.dart';
 import 'package:aamen/screens/generalInfo.dart';
 import 'package:aamen/screens/requests.dart';
@@ -15,27 +35,36 @@ import 'package:flutter/material.dart';
 import 'package:aamen/screens/analytics.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
-void main() => runApp(const paitentHome());
+import '../user.dart';
 
 /// This is the main application widget.
+// ignore: camel_case_types
 class paitentHome extends StatelessWidget {
-  const paitentHome({Key? key}) : super(key: key);
+  Users user;
+  List<Req> requists;
+  paitentHome({required this.requists, required this.user, Key? key})
+      : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
-      home: MyStatefulWidget(),
+      home: MyStatefulWidget(
+        req: this.requists,
+        user: user,
+      ),
     );
   }
 }
 
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
+  MyStatefulWidget({required this.req, required this.user, Key? key})
+      : super(key: key);
+  Users user;
+  List<Req> req;
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
@@ -43,13 +72,9 @@ class MyStatefulWidget extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
+
+  static TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    analytics(),
-    requests(),
-    generalInfo(),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -59,21 +84,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          GestureDetector(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Icon(Icons.logout),
-            ),
-            onTap: () {
-              sighnOut();
-            },
-          )
-        ],
-        title: const Text('Hi User ! :) '),
+    List<Widget> _widgetOptions = <Widget>[
+      analytics(
+        req: widget.req,
+        user: widget.user,
       ),
+      requests(
+        user: widget.user,
+      ),
+    ];
+    return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -81,15 +101,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.analytics_rounded),
-            label: 'Analytics',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.request_page),
-            label: 'Requests',
+            label: 'احصائيات',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            label: 'General Info',
+            label: 'معلمومات عامة',
           ),
         ],
         currentIndex: _selectedIndex,
