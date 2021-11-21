@@ -33,8 +33,8 @@
 
 # Please Follow these instructions to run the app on your device:
 
-** Please Note that, All devolpment has been done on an Iphone 13 emulator, you might find some bugs on pixel or other devices due to the 
-fixed widgets (We did not use expanded widgets  :( ) ** 
+* Please Note that, All devolpment has been done on an Iphone 13 emulator, you might find some bugs on pixel or other devices due to the 
+fixed widgets - We did not use expanded widgets  :( -
 
 ## Built with
 * [Flutter](https://flutter.dev/) 
