@@ -2,6 +2,11 @@
 
 ## FlutterWeekend Project!
 
+
+## Authors
+* **Nawaf Al Omari**: [GitHub](https://github.com/nawafalomari) & [Twitter](https://twitter.com/alomariNawafM).
+* **Hadi Al Marzooq**: [GitHub](https://github.com/HadiAlMarzooq) & [Twitter](https://twitter.com/red_hadi).
+
 ## فكرة التطبيق | IDEA 
 
 ### تطبيق آمن هو حلقة الوصل بين شركات التأمين والمستشفى والمريض، قررنا في آمن ننهي انتظار موافقة التأمين لإكمال العلاج، عن طريق توحيد وتجميع جميع شركات التأمين في منصة واحدة مع المستشفيات، وحساب أهلية العلاج ستكون تلقائية (بدون انتظار)  **☺️**
@@ -25,10 +30,6 @@
  
 
 
-
-## Authors
-* **Nawaf Al Omari**: [GitHub](https://github.com/nawafalomari) & [Twitter](https://twitter.com/alomariNawafM).
-* **Hadi Al Marzooq**: [GitHub](https://github.com/HadiAlMarzooq) & [Twitter](https://twitter.com/red_hadi).
 
 # Please Follow these instructions to run the app on your device:
 
