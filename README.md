@@ -11,10 +11,15 @@
 # Screenshots :
 
  Login Page (linked with firebase authentication)
+ 
 <img width="473" alt="login" src="https://user-images.githubusercontent.com/79160189/142764752-dbeca16b-a819-4595-9375-488bc1dd744f.png">
+
  Patients home page (all data is linked with firestore)
+ 
 <img width="473" alt="sc1" src="https://user-images.githubusercontent.com/79160189/142764747-cca30eef-2341-4af7-a753-e876d8a3c150.png">
+
  Info Page          (all data is linked with firestore)
+ 
 <img width="473" alt="sc2" src="https://user-images.githubusercontent.com/79160189/142764750-3c7a0a6e-29f3-4dfd-be34-a434bb28c2b6.png">
 
  
