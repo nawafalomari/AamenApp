@@ -4,8 +4,8 @@
 
 
 ## Authors
-* **Nawaf Al Omari**: [GitHub](https://github.com/nawafalomari) & [Twitter](https://twitter.com/alomariNawafM).
-* **Hadi Al Marzooq**: [GitHub](https://github.com/HadiAlMarzooq) & [Twitter](https://twitter.com/red_hadi).
+* **Nawaf Al Omari**: [GitHub](https://github.com/nawafalomari) & [Twitter](https://twitter.com/alomariNawafM) & [Linkedin] (https://www.linkedin.com/in/nawaf-alomari-789b59224/).
+* **Hadi Al Marzooq**: [GitHub](https://github.com/HadiAlMarzooq) & [Twitter](https://twitter.com/red_hadi) & [Linkedin] (https://www.linkedin.com/in/hadi-al-marzooq-a60388211/).
 
 ## فكرة التطبيق | IDEA 
 
