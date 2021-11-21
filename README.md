@@ -2,15 +2,15 @@
 
 FlutterWeekend Project!
 
-## Getting Started
+Made By:
+- Nawaf Al Omari
+- Hadi Al Marzooq
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Plese Follow these instructions to run the app on your device:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1) Make sure you have downloaded Flutter on you machine.
+2) Clone the repo.
+3) download the pub packages by running ```javascript
+pub get packages
+```
